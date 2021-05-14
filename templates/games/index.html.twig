@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% for game in games %}
+    <div class="card" style="width: 18rem;">
+  <img src="{{game.logo}}" class="card-img-top" alt="{{game.name}}">
+  <div class="card-body">
+    <p class="card-text">
+    <p>{{ game.name }}</p>
+    <p>{{ game.duration }} hours</p>
+  </div>
+</div>
+    
+    {% endfor %}
+{% endblock %}
