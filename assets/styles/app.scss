@@ -1,9 +1,13 @@
 @import "~bootstrap/scss/bootstrap";
-
+/*
 body {
     background-color: rgb(189, 43, 67);
 }
-
+*/
 .card-overlay {
-    background-color: rgba(0, 0, 0, 0.719);  
+    background-color: rgba(0, 0, 0, 0.692);  
+}
+
+.card-overlay:hover {
+    background-color: rgba(0, 0, 0, 0);  
 }
