@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+   {{ game.name }}
+   {% if game.duration %}
+    {{ game.duration }} hours
+   {% endif %}
+{% endblock %}

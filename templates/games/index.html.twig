@@ -6,12 +6,14 @@
   <div class="row">
     {% for game in games %}
     <div class="col-4">
+      <a href="{{ path('app_game_details', {'id': game.id}) }}">
       <div class="card mb-4 mt-4 black-overlay">
         <img src="{{ game.backgroundImage }}" class="card-img" alt="{{ game.name }}">
         <div class="card-img-overlay card-overlay align-items-center justify-content-center d-flex">
           <img src="{{ game.logo }}" width="60%" alt="{{ game.name }}">
         </div>
       </div>
+      </a>
     </div>
     {% endfor %}
   </div>
