@@ -2,7 +2,7 @@
 
 {% block body %}
 
-<div class="container">
+<div class="container-fluid">
   <div class="row">
     {% for game in games %}
     <div class="col-4">
@@ -10,7 +10,7 @@
       <div class="card mb-4 mt-4 black-overlay">
         <img src="{{ game.backgroundImage }}" class="card-img" alt="{{ game.name }}">
         <div class="card-img-overlay card-overlay align-items-center justify-content-center d-flex">
-          <img class="logo-animation" src="{{ game.logo }}" width="65%" alt="{{ game.name }}">
+          <img src="{{ game.logo }}" width="65%" alt="{{ game.name }}">
         </div>
       </div>
       </a>
