@@ -5,7 +5,7 @@
 <div class="container-fluid">
   <div class="row">
     {% for game in games %}
-    <div class="col-4">
+    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
       <a href="{{ path('app_game_details', {'id': game.id}) }}">
       <div class="card mb-4 mt-4 black-overlay">
         <img src="{{ game.backgroundImage }}" class="card-img" alt="{{ game.name }}">
