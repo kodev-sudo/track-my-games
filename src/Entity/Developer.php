@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\GameRepository;
+use App\Repository\DeveloperRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=GameRepository::class)
+ * @ORM\Entity(repositoryClass=DeveloperRepository::class)
  */
-class Game
+class Developer
 {
     /**
      * @ORM\Id
@@ -26,16 +26,6 @@ class Game
      * @ORM\Column(type="string", length=255)
      */
     private $logo;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $background_image;
-
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $duration;
 
     public function getId(): ?int
     {
@@ -63,29 +53,6 @@ class Game
     {
         $this->logo = $logo;
 
-        return $this;
-    }
-
-    public function getBackgroundImage(): ?string
-    {
-        return $this->background_image;
-    }
-
-    public function setBackgroundImage(?string $background_image): self
-    {
-        $this->background_image = $background_image;
-
-        return $this;
-    }
-
-    public function getDuration(): ?int
-    {
-        return $this->duration;
-    }
-
-    public function setDuration(?int $duration): self
-    {
-        $this->duration = $duration;
         return $this;
     }
 }
