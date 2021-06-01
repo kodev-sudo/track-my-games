@@ -27,6 +27,11 @@ class Developer
      */
     private $logo;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Game::class, inversedBy="developer")
+     */
+    private $game;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,6 +57,18 @@ class Developer
     public function setLogo(string $logo): self
     {
         $this->logo = $logo;
+
+        return $this;
+    }
+
+    public function getGame(): ?Game
+    {
+        return $this->game;
+    }
+
+    public function setGame(?Game $game): self
+    {
+        $this->game = $game;
 
         return $this;
     }

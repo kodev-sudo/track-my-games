@@ -1,8 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-{% for developer in developers %}
-    {{ developer.name }}
-    <img src="{{ developer.logo }}" />
-{% endfor %}
+    {% for developer in developers %}
+        Games developed by {{ developer.name }} :
+        <p>{{ developer.game.name }}</p>
+        <img width="10%" src="{{ developer.logo }}" />
+    {% endfor %}
 {% endblock %}
