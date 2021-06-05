@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\DeveloperRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -28,9 +30,14 @@ class Developer
     private $logo;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Game::class, inversedBy="developer")
+     * @ORM\OneToMany(targetEntity=Game::class, mappedBy="developer")
      */
-    private $game;
+    private $games;
+
+    public function __construct()
+    {
+        $this->games = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -61,14 +68,32 @@ class Developer
         return $this;
     }
 
-    public function getGame(): ?Game
+    /**
+     * @return Collection|Game[]
+     */
+    public function getGames(): Collection
     {
-        return $this->game;
+        return $this->games;
     }
 
-    public function setGame(?Game $game): self
+    public function addGame(Game $game): self
     {
-        $this->game = $game;
+        if (!$this->games->contains($game)) {
+            $this->games[] = $game;
+            $game->setDeveloper($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGame(Game $game): self
+    {
+        if ($this->games->removeElement($game)) {
+            // set the owning side to null (unless already changed)
+            if ($game->getDeveloper() === $this) {
+                $game->setDeveloper(null);
+            }
+        }
 
         return $this;
     }

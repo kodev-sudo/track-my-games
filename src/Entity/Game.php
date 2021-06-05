@@ -40,14 +40,10 @@ class Game
     private $duration;
 
     /**
-     * @ORM\OneToMany(targetEntity=Developer::class, mappedBy="game")
+     * @ORM\ManyToOne(targetEntity=Developer::class, inversedBy="games")
+     * @ORM\JoinColumn(nullable=true)
      */
     private $developer;
-
-    public function __construct()
-    {
-        $this->developer = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -101,32 +97,14 @@ class Game
         return $this;
     }
 
-    /**
-     * @return Collection|Developer[]
-     */
-    public function getDeveloper(): Collection
+    public function getDeveloper(): ?Developer
     {
         return $this->developer;
     }
 
-    public function addDeveloper(Developer $developer): self
+    public function setDeveloper(?Developer $developer): self
     {
-        if (!$this->developer->contains($developer)) {
-            $this->developer[] = $developer;
-            $developer->setGame($this);
-        }
-
-        return $this;
-    }
-
-    public function removeDeveloper(Developer $developer): self
-    {
-        if ($this->developer->removeElement($developer)) {
-            // set the owning side to null (unless already changed)
-            if ($developer->getGame() === $this) {
-                $developer->setGame(null);
-            }
-        }
+        $this->developer = $developer;
 
         return $this;
     }
